@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:12.5
+    ports:
+      - "5432:5432"
+    volumes:
+      - /mydata/postgresql:/var/lib/postgresql/data:rw
+      - ./postgres/conf/my.conf:/etc/postgresql/postgresql.conf
+    env_file:
+      - ./postgres/.env
+    restart: always
